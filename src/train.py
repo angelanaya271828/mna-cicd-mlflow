@@ -20,12 +20,12 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # Configuración de MLflow
-mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI", "http://localhost:5000"))
+mlflow.set_tracking_uri("https://retriever-sandpit-ship.ngrok-free.dev")
 mlflow.set_experiment("wine-quality-experiment")
 
 with mlflow.start_run():
     # Train a model
-    random_state = 2
+    random_state = 3
     model = RandomForestClassifier(n_estimators=50, random_state=random_state)
     mlflow.log_param("random_state", random_state)
     model.fit(X_train, y_train)
