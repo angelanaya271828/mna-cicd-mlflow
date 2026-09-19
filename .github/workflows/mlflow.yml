@@ -22,5 +22,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run training script
+        env:
+          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
         run: |
           python src/train.py
